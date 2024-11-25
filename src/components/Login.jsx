@@ -1,6 +1,6 @@
 
 
-import React from 'react'
+import React, { useState } from 'react'
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import app from './firbase_config';
 
@@ -11,10 +11,11 @@ const auth =getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const Login = () => {
-    
 
-
-const handleGoogleSignIn =()=>{
+  
+  
+  let [userid,setUser] =useState(null)
+  const handleGoogleSignIn =()=>{
 
 
     
@@ -25,7 +26,8 @@ const handleGoogleSignIn =()=>{
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      console.log("here it is",token)
+      setUser(user)
+      // console.log("here it is",token)
       console.log("here it is",user)
 
       
@@ -59,6 +61,11 @@ const handleGoogleSignIn =()=>{
 
         <button onClick={handleGoogleSignIn} >Google login</button>
 
+        {
+        userid && <div>
+          <h2>Name:{userid.displayName}</h2>
+        </div>
+      }
 
 
     </div>
