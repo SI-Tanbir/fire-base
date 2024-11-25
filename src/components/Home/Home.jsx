@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Header from '../Header/Header'
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 
 const Home = () => {
@@ -9,6 +9,7 @@ const Home = () => {
     <div>
 
             <h3> hey this home</h3>
+            <Link to='/login' >Login</Link>
         
     </div>
   )
